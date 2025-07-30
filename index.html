@@ -20,88 +20,94 @@
             </div>
         </header>
 
-        <div id="main-area">
-            <div id="clicker-zone">
-                <button id="clicker-button" title="Click to make a Coffee Bean!">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                           <radialGradient id="cupGradient" cx="0.5" cy="0.5" r="0.7">
-                             <stop offset="0%" stop-color="#e0e0e0" />
-                             <stop offset="100%" stop-color="#c0c0c0" />
-                           </radialGradient>
-                           <radialGradient id="coffeeGradient" cx="0.5" cy="0.5" r="0.6">
-                             <stop offset="0%" stop-color="#6f4e37" />
-                             <stop offset="80%" stop-color="#4a3426" />
-                           </radialGradient>
-                        </defs>
-                        <!-- Cup Body -->
-                        <path d="M 20 90 Q 20 70 30 70 L 70 70 Q 80 70 80 90 Z" fill="url(#cupGradient)" stroke="#555" stroke-width="2"/>
-                        <!-- Cup Handle -->
-                        <path d="M 80 75 Q 95 80 80 85" fill="none" stroke="url(#cupGradient)" stroke-width="8"/>
-                        <path d="M 80 75 Q 90 80 80 85" fill="none" stroke="#555" stroke-width="2"/>
-                        <!-- Coffee Inside -->
-                        <ellipse cx="50" cy="70" rx="22" ry="8" fill="url(#coffeeGradient)" />
-                        <!-- Steam -->
-                        <path d="M 40 60 Q 42 50 50 50 Q 58 50 60 60" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam"/>
-                        <path d="M 35 55 Q 37 45 45 45 Q 53 45 55 55" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam" style="animation-delay: 0.5s;"/>
-                         <path d="M 45 50 Q 47 40 55 40 Q 63 40 65 50" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam" style="animation-delay: 1s;"/>
-                    </svg>
-                    <span>Make Coffee!</span>
-                </button>
-                 <div id="click-feedback-container"></div>
+        <div id="game-body">
+            <div id="main-game-column">
+                <div id="main-area">
+                    <div id="clicker-zone">
+                        <button id="clicker-button" title="Click to make a Coffee Bean!">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                   <radialGradient id="cupGradient" cx="0.5" cy="0.5" r="0.7">
+                                     <stop offset="0%" stop-color="#e0e0e0" />
+                                     <stop offset="100%" stop-color="#c0c0c0" />
+                                   </radialGradient>
+                                   <radialGradient id="coffeeGradient" cx="0.5" cy="0.5" r="0.6">
+                                     <stop offset="0%" stop-color="#6f4e37" />
+                                     <stop offset="80%" stop-color="#4a3426" />
+                                   </radialGradient>
+                                </defs>
+                                <!-- Cup Body -->
+                                <path d="M 20 90 Q 20 70 30 70 L 70 70 Q 80 70 80 90 Z" fill="url(#cupGradient)" stroke="#555" stroke-width="2"/>
+                                <!-- Cup Handle -->
+                                <path d="M 80 75 Q 95 80 80 85" fill="none" stroke="url(#cupGradient)" stroke-width="8"/>
+                                <path d="M 80 75 Q 90 80 80 85" fill="none" stroke="#555" stroke-width="2"/>
+                                <!-- Coffee Inside -->
+                                <ellipse cx="50" cy="70" rx="22" ry="8" fill="url(#coffeeGradient)" />
+                                <!-- Steam -->
+                                <path d="M 40 60 Q 42 50 50 50 Q 58 50 60 60" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam"/>
+                                <path d="M 35 55 Q 37 45 45 45 Q 53 45 55 55" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam" style="animation-delay: 0.5s;"/>
+                                 <path d="M 45 50 Q 47 40 55 40 Q 63 40 65 50" stroke="#a3a3a3" stroke-width="2" fill="none" stroke-dasharray="3 3" class="steam" style="animation-delay: 1s;"/>
+                            </svg>
+                            <span>Make Coffee!</span>
+                        </button>
+                         <div id="click-feedback-container"></div>
+                    </div>
+
+                    <div id="merge-board-container">
+                        <div id="dropper-progress-container" style="display: none;">
+                            <div id="dropper-progress-bar"></div>
+                        </div>
+                        <div id="merge-board">
+                            <!-- Slots will be generated by JS -->
+                        </div>
+                         <div id="sell-zone">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M54,55V47.5a1.5,1.5,0,0,0-1.5-1.5H11.5A1.5,1.5,0,0,0,10,47.5V55" fill="#c9c9c9"/>
+                                <path d="M57,48H7a3,3,0,0,0-3,3V55a3,3,0,0,0,3,3H57a3,3,0,0,0,3-3V51A3,3,0,0,0,57,48ZM11.5,55a1.5,1.5,0,0,1-1.5-1.5V50h44v3.5A1.5,1.5,0,0,1,52.5,55Z" fill="#a4a4a4"/>
+                                <path d="M52,10H12a3,3,0,0,0-3,3V46H55V13A3,3,0,0,0,52,10Z" fill="#64798a"/>
+                                <rect x="13" y="14" width="38" height="19" rx="1.5" ry="1.5" fill="#c9f2f2"/>
+                                <path d="M14.5,30h35A1.5,1.5,0,0,1,51,31.5v3A1.5,1.5,0,0,1,49.5,36h-35A1.5,1.5,0,0,1,13,34.5v-3A1.5,1.5,0,0,1,14.5,30Z" fill="#465a67"/>
+                                <circle cx="21" cy="22" r="2" fill="#465a67"/>
+                                <circle cx="29" cy="22" r="2" fill="#465a67"/>
+                                <circle cx="37" cy="22" r="2" fill="#465a67"/>
+                                <circle cx="45" cy="22" r="2" fill="#465a67"/>
+                                <path d="M47,38h-4a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V39A1,1,0,0,0,47,38Z" fill="#e6e6e6"/>
+                                <path d="M48,40.5a1,1,0,0,1-1,1H43a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1Z" fill="#f29c1f"/>
+                                <text x="32" y="60" font-family="Arial, sans-serif" font-size="8" fill="#4a3426" text-anchor="middle">Drag item here to sell</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="merge-board-container">
-                <div id="dropper-progress-container" style="display: none;">
-                    <div id="dropper-progress-bar"></div>
-                </div>
-                <div id="merge-board">
-                    <!-- Slots will be generated by JS -->
-                </div>
-                 <div id="sell-zone">
-                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M54,55V47.5a1.5,1.5,0,0,0-1.5-1.5H11.5A1.5,1.5,0,0,0,10,47.5V55" fill="#c9c9c9"/>
-                        <path d="M57,48H7a3,3,0,0,0-3,3V55a3,3,0,0,0,3,3H57a3,3,0,0,0,3-3V51A3,3,0,0,0,57,48ZM11.5,55a1.5,1.5,0,0,1-1.5-1.5V50h44v3.5A1.5,1.5,0,0,1,52.5,55Z" fill="#a4a4a4"/>
-                        <path d="M52,10H12a3,3,0,0,0-3,3V46H55V13A3,3,0,0,0,52,10Z" fill="#64798a"/>
-                        <rect x="13" y="14" width="38" height="19" rx="1.5" ry="1.5" fill="#c9f2f2"/>
-                        <path d="M14.5,30h35A1.5,1.5,0,0,1,51,31.5v3A1.5,1.5,0,0,1,49.5,36h-35A1.5,1.5,0,0,1,13,34.5v-3A1.5,1.5,0,0,1,14.5,30Z" fill="#465a67"/>
-                        <circle cx="21" cy="22" r="2" fill="#465a67"/>
-                        <circle cx="29" cy="22" r="2" fill="#465a67"/>
-                        <circle cx="37" cy="22" r="2" fill="#465a67"/>
-                        <circle cx="45" cy="22" r="2" fill="#465a67"/>
-                        <path d="M47,38h-4a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V39A1,1,0,0,0,47,38Z" fill="#e6e6e6"/>
-                        <path d="M48,40.5a1,1,0,0,1-1,1H43a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1Z" fill="#f29c1f"/>
-                        <text x="32" y="60" font-family="Arial, sans-serif" font-size="8" fill="#4a3426" text-anchor="middle">Drag item here to sell</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <div id="upgrades-container">
-            <h2>Upgrades</h2>
-            <div id="upgrades-grid">
-                <button id="auto-generator-upgrade" data-cost="0">Get FREE Auto Bean Dropper!</button>
-                <div id="auto-generator-status" style="display: none;">
-                    <span class="upgrade-label">Auto Dropper Lvl: <span id="auto-generator-level-display">0</span></span>
-                </div>
-                <button id="upgrade-generator-level" data-cost="500" style="display: none;">Upgrade Dropper (Cost: 500)</button>
-                <button id="upgrade-click-level" data-cost="1000">Upgrade Clicker (Cost: 1000)</button>
-                <button id="buy-slot-upgrade" data-cost="200">Buy New Slot (Cost: 200)</button>
-                <button id="buy-auto-merger-upgrade" data-cost="10000">Buy Auto-Merger (10k Pts)</button>
-                <button id="buy-auto-seller-upgrade" data-cost="15000">Buy Auto-Seller (15k Pts)</button>
-                <button id="upgrade-quality" data-cost="20000">Improve Quality (20k Pts)</button>
-                <button id="upgrade-cps" data-cost="25000">Barista Training (25k Pts)</button>
-                
-                <div id="auto-merger-toggle-container" style="display: none; align-items: center; justify-content: center; background-color: #eee0c1; padding: 5px; border-radius: 5px; margin: 5px;">
-                    <label for="auto-merger-toggle" style="cursor: pointer; color: #4a3426; font-weight: bold;">Auto-Merge:</label>
-                    <input type="checkbox" id="auto-merger-toggle" style="width: 20px; height: 20px; cursor: pointer; margin-left: 8px;">
-                </div>
-                <div id="auto-seller-container" style="display: none; align-items: center; justify-content: center; background-color: #eee0c1; padding: 5px; border-radius: 5px; margin: 5px;">
-                    <label for="auto-sell-level" style="cursor: pointer; color: #4a3426; font-weight: bold;">Auto-Sell Level:</label>
-                    <select id="auto-sell-level" style="cursor: pointer; margin-left: 8px; padding: 4px; border-radius: 4px; border: 1px solid #8b5e3c; background-color: #fffaf0;"></select>
+            <div id="upgrades-column">
+                <div id="upgrades-container">
+                    <h2>Upgrades</h2>
+                    <div id="upgrades-grid">
+                        <button id="auto-generator-upgrade" data-cost="0">Get FREE Auto Bean Dropper!</button>
+                        <div id="auto-generator-status" style="display: none;">
+                            <span class="upgrade-label">Auto Dropper Lvl: <span id="auto-generator-level-display">0</span></span>
+                        </div>
+                        <button id="upgrade-generator-level" data-cost="500" style="display: none;">Upgrade Dropper (Cost: 500)</button>
+                        <button id="upgrade-click-level" data-cost="1000">Upgrade Clicker (Cost: 1000)</button>
+                        <button id="buy-slot-upgrade" data-cost="200">Buy New Slot (Cost: 200)</button>
+                        <button id="buy-auto-merger-upgrade" data-cost="10000">Buy Auto-Merger (10k Pts)</button>
+                        <button id="buy-auto-seller-upgrade" data-cost="15000">Buy Auto-Seller (15k Pts)</button>
+                        <button id="upgrade-quality" data-cost="20000">Improve Quality (20k Pts)</button>
+                        <button id="upgrade-cps" data-cost="25000">Barista Training (25k Pts)</button>
+                        
+                        <div id="auto-merger-toggle-container" style="display: none; align-items: center; justify-content: center; background-color: #eee0c1; padding: 5px; border-radius: 5px; margin: 5px;">
+                            <label for="auto-merger-toggle" style="cursor: pointer; color: #4a3426; font-weight: bold;">Auto-Merge:</label>
+                            <input type="checkbox" id="auto-merger-toggle" style="width: 20px; height: 20px; cursor: pointer; margin-left: 8px;">
+                        </div>
+                        <div id="auto-seller-container" style="display: none; align-items: center; justify-content: center; background-color: #eee0c1; padding: 5px; border-radius: 5px; margin: 5px;">
+                            <label for="auto-sell-level" style="cursor: pointer; color: #4a3426; font-weight: bold;">Auto-Sell Level:</label>
+                            <select id="auto-sell-level" style="cursor: pointer; margin-left: 8px; padding: 4px; border-radius: 4px; border: 1px solid #8b5e3c; background-color: #fffaf0;"></select>
+                        </div>
+                    </div>
+                    <!-- More upgrades later -->
                 </div>
             </div>
-            <!-- More upgrades later -->
         </div>
 
     </div>

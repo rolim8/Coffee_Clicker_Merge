@@ -103,7 +103,7 @@ body {
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -113,20 +113,27 @@ header {
     border-bottom: 1px solid var(--header-border);
     padding-bottom: 15px;
     transition: border-color 0.3s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 
 header h1 {
     color: var(--header-color);
-    margin-bottom: 5px;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     transition: color 0.3s;
+    flex-grow: 1; /* Allow h1 to take space */
+    text-align: left;
 }
 
 #game-mode-container {
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 #hard-mode-button {
@@ -151,6 +158,13 @@ header h1 {
 
 .hard-mode #hard-mode-button:hover {
     background-color: #5aa1e0;
+}
+
+#header-info-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 #theme-toggle-button,
@@ -179,7 +193,7 @@ header h1 {
 
 #score-container, #cps-container {
     font-size: 1.2em;
-    margin: 5px 0;
+    margin: 0;
     background-color: var(--widget-bg);
     padding: 5px 10px;
     border-radius: 5px;
@@ -194,6 +208,30 @@ header h1 {
     transition: color 0.3s;
 }
 
+#game-body {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping to new line */
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#main-game-column {
+    flex: 2; /* Takes more space */
+    min-width: 450px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#upgrades-column {
+    flex: 1;
+    min-width: 250px; /* Adjust as needed */
+    max-width: 320px;
+    position: sticky; /* Makes it stick on scroll */
+    top: 20px; /* Distance from top */
+}
+
 #main-area {
     display: flex;
     gap: 20px;
@@ -203,8 +241,7 @@ header h1 {
 }
 
 #clicker-zone {
-    flex: 1;
-    min-width: 200px;
+    flex: 0 0 160px; /* Don't grow, don't shrink, base width 160px */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,7 +259,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 150px;
+    width: 100%;
     height: 180px;
 }
 
@@ -286,8 +323,9 @@ header h1 {
 }
 
 #merge-board-container {
-    flex: 2;
+    flex: 2; /* Takes up most of the space */
     min-width: 300px;
+    max-width: 500px;
     background-color: var(--board-bg);
     border: 2px dashed var(--board-border);
     border-radius: 10px;
@@ -395,15 +433,22 @@ header h1 {
 }
 
 #upgrades-container {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid var(--header-border);
+    margin-top: 0;
+    border-top: none;
     text-align: center;
     transition: border-color 0.3s;
+    background-color: var(--container-bg); /* Add background and border for consistency */
+    border: 2px solid var(--container-border);
+    border-radius: 15px;
+    padding: 20px;
+    height: 60vh; /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
 }
 
 #upgrades-container h2 {
      color: var(--header-color);
+     margin-top: 0;
      margin-bottom: 10px;
      transition: color 0.3s;
 }
@@ -413,6 +458,9 @@ header h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    overflow-y: auto; /* Make upgrades scrollable if they get too tall */
+    padding-right: 5px; /* Space for scrollbar */
+    flex-grow: 1; /* Allow grid to fill available space */
 }
 
 #upgrades-container button, #auto-merger-toggle-container, #auto-seller-container {
@@ -649,5 +697,22 @@ header h1 {
     transition: background-color 0.3s;
 }
 #achievements-list::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-bg);
+}
+
+#upgrades-grid::-webkit-scrollbar {
+    width: 8px;
+}
+#upgrades-grid::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+#upgrades-grid::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+#upgrades-grid::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover-bg);
 }
