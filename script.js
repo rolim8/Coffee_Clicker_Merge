@@ -383,7 +383,7 @@ const ACHIEVEMENTS = {
         check: () => hasAutoMerger
     },
     'board_max': {
-        name: "Real Estate Mogul",
+        name: "Territory Master",
         description: "Expand your board to the maximum size.",
         check: () => currentBoardSize >= MAX_BOARD_SIZE
     },
