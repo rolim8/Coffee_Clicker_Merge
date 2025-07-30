@@ -383,7 +383,7 @@ const ACHIEVEMENTS = {
         check: () => hasAutoMerger
     },
     'board_max': {
-        name: "Territory Master",
+        name: "Real Estate Mogul",
         description: "Expand your board to the maximum size.",
         check: () => currentBoardSize >= MAX_BOARD_SIZE
     },
@@ -1261,8 +1261,8 @@ function runAutoSell() {
 
     for (const slotId of slotIds) {
         const item = boardItems[slotId];
-        // Check if item exists and matches the auto-sell level
-        if (item && item.level === autoSellLevel) {
+        // Check if item exists and is less than or equal to the auto-sell level
+        if (item && item.level <= autoSellLevel) {
             const sellPrice = Math.floor((ITEM_SELL_PRICES[item.level] || 0) * sellPriceMultiplier);
             addScore(sellPrice);
             stats.itemsSold++;
@@ -1330,7 +1330,14 @@ function runAutoMerge() {
 
 function populateAutoSellDropdown() {
     autoSellLevelSelect.innerHTML = '';
-    for (let i = 1; i < MAX_ITEM_LEVEL; i++) { // Don't allow selling max level
+    
+    // Add an "Off" option
+    const offOption = document.createElement('option');
+    offOption.value = 0;
+    offOption.textContent = 'Off';
+    autoSellLevelSelect.appendChild(offOption);
+    
+    for (let i = 1; i <= MAX_ITEM_LEVEL; i++) { // Loop up to and including MAX_ITEM_LEVEL
         const option = document.createElement('option');
         option.value = i;
         option.textContent = `Level ${i}`;
