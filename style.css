@@ -1,0 +1,653 @@
+:root {
+  --bg-color: #f4eade;
+  --text-color: #4a3426;
+  --container-bg: #fffaf0;
+  --container-border: #8b5e3c;
+  --header-color: #6f4e37;
+  --header-border: #d2b48c;
+  --widget-bg: #fdf5e6;
+  --widget-strong-text: #3b271a;
+  --button-primary-bg: #d2b48c;
+  --button-primary-border: #8b5e3c;
+  --button-primary-hover-bg: #c1a074;
+  --button-primary-active-bg: #b09060;
+  --button-primary-text: #4a3426;
+  --button-upgrade-bg: #a0522d;
+  --button-upgrade-hover-bg: #8b4513;
+  --button-disabled-bg: #cccccc;
+  --feedback-text-color: #6f4e37;
+  --board-bg: #eee0c1;
+  --board-border: #8b5e3c;
+  --slot-bg: #fffaf0;
+  --slot-border: #d2b48c;
+  --slot-hover-bg: #c1a074;
+  --sell-zone-bg: #f0f0f0;
+  --sell-zone-border: #a0a0a0;
+  --sell-zone-over-bg: #d4edda;
+  --sell-zone-over-border: #28a745;
+  --progress-bar-bg: #6f4e37;
+  --progress-bar-track-bg: #fffaf0;
+  --progress-bar-track-border: #8b5e3c;
+  --modal-bg: rgba(0,0,0,0.5);
+  --modal-content-bg: #f4eade;
+  --modal-content-border: #8b5e3c;
+  --achievement-item-bg: #fffaf0;
+  --achievement-item-border: #d2b48c;
+  --close-button-color: #aaa;
+  --close-button-hover-color: #4a3426;
+  --scrollbar-track-bg: #eee0c1;
+  --scrollbar-thumb-bg: #8b5e3c;
+  --scrollbar-thumb-hover-bg: #6f4e37;
+}
+
+body.dark-mode {
+  --bg-color: #2b2b2b;
+  --text-color: #dcdcdc;
+  --container-bg: #3c3c3c;
+  --container-border: #6f4e37;
+  --header-color: #e4d5c7;
+  --header-border: #5a4b3e;
+  --widget-bg: #4a4a4a;
+  --widget-strong-text: #ffffff;
+  --button-primary-bg: #6f5e4b;
+  --button-primary-border: #9a7f64;
+  --button-primary-hover-bg: #836e57;
+  --button-primary-active-bg: #5c4e3e;
+  --button-primary-text: #f0f0f0;
+  --button-upgrade-bg: #8b5e3c;
+  --button-upgrade-hover-bg: #a06a42;
+  --button-disabled-bg: #555555;
+  --feedback-text-color: #e0b38a;
+  --board-bg: #453c32;
+  --board-border: #6f4e37;
+  --slot-bg: #52473c;
+  --slot-border: #6a5a4a;
+  --slot-hover-bg: #6a5a4a;
+  --sell-zone-bg: #444444;
+  --sell-zone-border: #777777;
+  --sell-zone-over-bg: #2f5d39;
+  --sell-zone-over-border: #3aa050;
+  --progress-bar-bg: #c1a074;
+  --progress-bar-track-bg: #453c32;
+  --progress-bar-track-border: #6f4e37;
+  --modal-bg: rgba(0,0,0,0.7);
+  --modal-content-bg: #3c3c3c;
+  --modal-content-border: #6f4e37;
+  --achievement-item-bg: #4a4a4a;
+  --achievement-item-border: #5a4b3e;
+  --close-button-color: #888;
+  --close-button-hover-color: #f0f0f0;
+  --scrollbar-track-bg: #453c32;
+  --scrollbar-thumb-bg: #8b5e3c;
+  --scrollbar-thumb-hover-bg: #a06a42;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    user-select: none; /* Prevent text selection during drag */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#game-container {
+    background-color: var(--container-bg);
+    border: 2px solid var(--container-border);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--header-border);
+    padding-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+header h1 {
+    color: var(--header-color);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: color 0.3s;
+}
+
+#game-mode-container {
+    margin-bottom: 10px;
+}
+
+#hard-mode-button {
+    background-color: #c24b4b;
+    color: white;
+    border: 1px solid #a03c3c;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+#hard-mode-button:hover {
+    background-color: #e05a5a;
+}
+
+.hard-mode #hard-mode-button {
+    background-color: #4b8cc2;
+    border-color: #3c7aa0;
+}
+
+.hard-mode #hard-mode-button:hover {
+    background-color: #5aa1e0;
+}
+
+#theme-toggle-button,
+#reset-button,
+#achievements-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.3s;
+    line-height: 1;
+}
+
+#theme-toggle-button:hover,
+#reset-button:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+#achievements-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#score-container, #cps-container {
+    font-size: 1.2em;
+    margin: 5px 0;
+    background-color: var(--widget-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid var(--header-border);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#score, #cps {
+    font-weight: bold;
+    color: var(--widget-strong-text);
+    transition: color 0.3s;
+}
+
+#main-area {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+#clicker-zone {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For click feedback */
+}
+
+#clicker-button {
+    background-color: var(--button-primary-bg);
+    border: 2px solid var(--button-primary-border);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+    height: 180px;
+}
+
+#clicker-button:hover {
+    background-color: var(--button-primary-hover-bg);
+}
+
+#clicker-button:active {
+    transform: scale(0.95);
+    background-color: var(--button-primary-active-bg);
+}
+
+#clicker-button svg {
+    width: 80px;
+    height: 80px;
+    pointer-events: none; /* Prevent SVG from interfering with button clicks */
+}
+
+#clicker-button span {
+    font-size: 1.1em;
+    color: var(--button-primary-text);
+    font-weight: bold;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+/* Steam Animation */
+@keyframes steam-float {
+  0% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-15px); opacity: 0.3; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+
+.steam {
+  animation: steam-float 2s infinite ease-out;
+}
+
+#click-feedback-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+}
+
+.click-feedback {
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--feedback-text-color);
+    opacity: 1;
+    animation: float-up 1s ease-out forwards;
+    transition: color 0.3s;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-50px); opacity: 0; }
+}
+
+#merge-board-container {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--board-bg);
+    border: 2px dashed var(--board-border);
+    border-radius: 10px;
+    padding: 10px 15px 15px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    gap: 10px; /* Space between board and sell zone */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#dropper-progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: var(--progress-bar-track-bg);
+    border: 1px solid var(--progress-bar-track-border);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#dropper-progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--progress-bar-bg); /* Coffee color */
+    transition: width 0.1s linear, background-color 0.3s; /* Smooth update */
+}
+
+#merge-board-container h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--header-color);
+    transition: color 0.3s;
+}
+
+#merge-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); /* Responsive grid */
+    gap: 10px;
+    min-height: 200px; /* Ensure it has some height */
+}
+
+#sell-zone {
+    height: 100px;
+    background-color: var(--sell-zone-bg);
+    border: 2px dashed var(--sell-zone-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#sell-zone.over {
+    background-color: var(--sell-zone-over-bg);
+    border-color: var(--sell-zone-over-border);
+    border-style: solid;
+}
+
+#sell-zone svg {
+    width: 90px;
+    height: 90px;
+    pointer-events: none; /* Allow drop events to hit the parent div */
+}
+
+.board-slot {
+    width: 60px;
+    height: 60px;
+    background-color: var(--slot-bg);
+    border: 1px solid var(--slot-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for positioning items */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.board-slot.over { /* Style when dragging over */
+    background-color: var(--slot-hover-bg);
+    border-style: solid;
+}
+
+.coffee-item-container {
+    width: 50px;
+    height: 50px;
+    cursor: grab;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-item-container.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    transform: scale(1.1); /* Make it slightly bigger while dragging */
+    z-index: 1000; /* Ensure dragged item is on top */
+}
+
+.coffee-item-container svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent SVG from capturing drag events */
+}
+
+#upgrades-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--header-border);
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+#upgrades-container h2 {
+     color: var(--header-color);
+     margin-bottom: 10px;
+     transition: color 0.3s;
+}
+
+#upgrades-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#upgrades-container button, #auto-merger-toggle-container, #auto-seller-container {
+    background-color: var(--button-upgrade-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin: 5px;
+}
+
+#upgrades-container button:hover:not(:disabled) {
+    background-color: var(--button-upgrade-hover-bg);
+}
+
+#auto-generator-status {
+    background-color: var(--board-bg);
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.upgrade-label {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1em;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 15px;
+    background-color: var(--slot-bg);
+    border: 1px solid var(--container-border);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background-color: var(--progress-bar-bg); /* Coffee color */
+    transition: width 0.1s linear; /* Smooth update */
+}
+
+#upgrades-container button:disabled {
+    background-color: var(--button-disabled-bg);
+    cursor: not-allowed;
+}
+
+/* Tooltip styles (basic) */
+[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  z-index: 10;
+  /* Position tooltip - adjust as needed */
+  bottom: 105%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* --- Achievements --- */
+
+#achievement-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-toast {
+    background-color: #fffaf0;
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slide-in 0.5s ease-out forwards, slide-out 0.5s ease-in 3.5s forwards;
+    transform: translateX(120%);
+}
+
+@keyframes slide-in {
+    to { transform: translateX(0); }
+}
+@keyframes slide-out {
+    from { transform: translateX(0); }
+    to { transform: translateX(120%); }
+}
+
+.toast-icon {
+    font-size: 2.5em;
+}
+
+.toast-text h4 {
+    margin: 0 0 5px 0;
+    color: #6f4e37;
+}
+
+.toast-text p {
+    margin: 0;
+    color: #4a3426;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg);
+    animation: fade-in 0.3s ease;
+    transition: background-color 0.3s;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: var(--modal-content-bg);
+    margin: 10% auto;
+    padding: 20px;
+    border: 2px solid var(--modal-content-border);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.close-button {
+    color: var(--close-button-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--close-button-hover-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#achievements-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    padding-right: 10px;
+}
+
+.achievement-item {
+    background: var(--achievement-item-bg);
+    border: 1px solid var(--achievement-item-border);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.5;
+    filter: grayscale(80%);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.achievement-item.unlocked {
+    opacity: 1;
+    filter: none;
+    border-left: 5px solid gold;
+}
+
+.achievement-icon {
+    font-size: 2em;
+}
+
+.achievement-details {
+    text-align: left;
+}
+
+.achievement-name {
+    margin: 0;
+    color: var(--header-color);
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.achievement-desc {
+    margin: 5px 0 0 0;
+    color: var(--text-color);
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+/* Scrollbar styling for achievements list */
+#achievements-list::-webkit-scrollbar {
+    width: 8px;
+}
+#achievements-list::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+#achievements-list::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+#achievements-list::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-bg);
+}
